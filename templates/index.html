@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+<div class="container " style="width: 500px; margin-top: 8%;">
+     <h1 class="text-center">Details Submission</h1>
+     <form class="py-4" method="POST" action="/details/" onsubmit="return validate()" >
+          {% csrf_token %}
+          <div class="form-group">
+               <label for="name">Name :</label>
+               <input type="text" class="form-control" id="name" name="name" placeholder="Enter your Name " required>
+          </div>
+          
+          <div class="form-group">
+               <label for="dateofbirth">Date Of Birth :</label>
+               <input type="date" class="form-control" id="date" name="date" placeholder="Enter your DOB" 
+                    required>
+          </div>
+
+          <div class="form-group">
+               <label for="email">Email address :</label>
+               <input type="email" class="form-control" id="email" name="email" placeholder="Enter your Email" required>
+          </div>
+          <div class="form-group">
+               <label for="phone">Phone Number :</label>
+               <input type="phone" class="form-control" maxlength="10" id="phone" name="phone"
+                    placeholder="Enter your Phone number" required>
+          </div>
+     <button class="btn btn-info btn-lg" type="submit" style=" margin-left: auto;margin-right: auto;display: block;" onclick="getAge()">Submit</button></a>
+     </form>
+</div>
+<script>
+    function validate(){
+     var age=document.getElementById('date').value;
+     var d = new Date();
+     var dd = d.getDate();
+     var mm=d.getMonth()+1;
+     var yy=d.getFullYear();
+
+     var dob=new Date(age)
+     var dd1 = dob.getDate();
+     var mm1=dob.getMonth()+1;
+     var yy1=dob.getFullYear();
+     
+     if((yy-yy1 == 18 && mm-mm1 <=0 && dd-dd1 <=0) || yy-yy1<18)
+          alert("Age Must be above 18");
+     else{
+          alert("Age is above 18");}
+    }
+</script>
+
+{% endblock body %}
