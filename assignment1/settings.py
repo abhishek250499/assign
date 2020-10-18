@@ -135,8 +135,5 @@ REST_FRAMEWORK = {
     ]
 }
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    '/var/www/static/',
-]
+
 django_heroku.settings(locals())
